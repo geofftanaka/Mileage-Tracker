@@ -1,4 +1,8 @@
 <resources>
+    <string name="km_traveled">KM Traveled</string>
+    <string name="add">Add</string>
+    <string name="daily_total">Daily Total</string>
+    <string name="annual_total">Annual Total</string>
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
