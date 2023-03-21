@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.Item
 import com.example.myapplication.data.ItemDao
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.temporal.TemporalAdjuster
@@ -37,6 +38,13 @@ class DistanceViewModel(private val itemDao: ItemDao) : ViewModel() {
         return list
     }
 
+    fun clearAllItems() : Boolean {
+        viewModelScope.launch(Dispatchers.IO) {
+            itemDao.deleteAllItems()
+        }
+
+        return true
+    }
     private fun getNewItemEntry(drivenDate: LocalDate?, distance: Int) : Item {
         return Item(
             drivenDate = drivenDate,

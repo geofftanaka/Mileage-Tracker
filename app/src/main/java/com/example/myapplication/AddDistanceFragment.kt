@@ -2,11 +2,12 @@ package com.example.myapplication
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-//import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.data.Item
 import com.example.myapplication.databinding.FragmentAddDistanceBinding
 
@@ -29,6 +30,11 @@ class AddDistanceFragment : Fragment() {
     }
 
     lateinit var item: Item
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -57,6 +63,14 @@ class AddDistanceFragment : Fragment() {
         _binding = null
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.display_items -> transitionToDisplayList()
+            R.id.clear_all -> clearAllItems()
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun isEntryValid(): Boolean {
         return viewModel.isEntryValid(binding.mileageAmount.text.toString().toInt())
     }
@@ -64,7 +78,13 @@ class AddDistanceFragment : Fragment() {
     private fun addNewItem() {
         if (isEntryValid()) {
             viewModel.addNewItem(binding.mileageAmount.text.toString().toInt())
+            binding.mileageAmount.setText("")
         }
+    }
+
+    private fun clearAllItems() : Boolean {
+        ClearWarningDialogFragment().show(childFragmentManager, "warningDialog")
+        return false
     }
 
     private fun updateDailyTotal() {
@@ -74,5 +94,10 @@ class AddDistanceFragment : Fragment() {
         viewModel.getAnnualTotal().observe(this.viewLifecycleOwner) { total ->
             binding.annualTotalAmount.text = total.toString()
         }
+    }
+
+    private fun transitionToDisplayList() : Boolean {
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        return true
     }
 }

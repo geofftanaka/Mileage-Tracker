@@ -21,8 +21,6 @@ interface ItemDao {
     @Query("SELECT SUM(distance) FROM Item WHERE date BETWEEN :startDate AND :endDate")
     fun getTotalByRange(startDate: LocalDate, endDate: LocalDate) : Flow<Int>
 
-//    @Query("SELECT SUM(distance) FROM Item WHERE date")
-
-//    @Query("DELETE FROM Item")
-//    fun deleteAllItems()
+    @Query("DELETE FROM Item")
+    fun deleteAllItems()
 }
