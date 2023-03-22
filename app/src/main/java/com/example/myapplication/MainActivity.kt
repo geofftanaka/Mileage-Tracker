@@ -10,12 +10,17 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var bottomNav: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -30,11 +35,22 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAnchorView(R.id.fab)
-                    .setAction("Action", null).show()
-        }
+        bottomNav = findViewById(R.id.bottom_nav_view)
+        bottomNav.setupWithNavController(navController)
+//        bottomNav.setOnItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.add_distance_nav -> {
+//                    loadFragment(AddDistanceFragment())
+//                    true
+//                }
+//            }
+//        }
+
+//        binding.fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                    .setAnchorView(R.id.fab)
+//                    .setAction("Action", null).show()
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -58,4 +74,11 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+//    private fun loadFragment(fragment: Fragment) {
+//        when (fragment) {
+//            fragment.
+//        }
+//        findNavController(fragment.id).navigate(R.id.action_FirstFragment_to_SecondFragment)
+//    }
 }

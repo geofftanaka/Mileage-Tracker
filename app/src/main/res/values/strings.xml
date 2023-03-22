@@ -9,12 +9,13 @@
     <string name="no">No</string>
     <string name="login_name">Login Name</string>
     <string name="login">Login</string>
-
     <string name="app_name">Trip Tracker</string>
     <string name="display_list">Display Item List</string>
+
+
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Add Distance</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="add_distance_label">Add Distance</string>
+    <string name="view_distance_label">View Distance</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
