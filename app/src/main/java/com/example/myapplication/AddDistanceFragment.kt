@@ -40,10 +40,8 @@ class AddDistanceFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentAddDistanceBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -97,7 +95,7 @@ class AddDistanceFragment : Fragment() {
     }
 
     private fun transitionToDisplayList() : Boolean {
-        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        findNavController().navigate(R.id.action_add_distance_nav_to_view_distance_nav)
         return true
     }
 }

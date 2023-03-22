@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/add_distance_nav">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/add_distance_nav"
         android:name="com.example.myapplication.AddDistanceFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/add_distance_label"
         tools:layout="@layout/fragment_add_distance">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_add_distance_nav_to_view_distance_nav"
+            app:destination="@id/view_distance_nav" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/view_distance_nav"
         android:name="com.example.myapplication.ViewDistanceFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:label="@string/view_distance_label"
+        tools:layout="@layout/fragment_view_distance">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_view_distance_nav_to_add_distance_nav"
+            app:destination="@id/add_distance_nav" />
     </fragment>
 </navigation>

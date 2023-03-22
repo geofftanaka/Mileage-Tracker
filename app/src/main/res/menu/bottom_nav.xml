@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/add_distance_nav"
+        android:title="@string/add_distance_label"
+        android:icon="@drawable/add_48px"/>
+    <item
+        android:id="@+id/view_distance_nav"
+        android:title="@string/view_distance_label"
+        android:icon="@drawable/list_48px"/>
+</menu>
