@@ -11,13 +11,22 @@
     <string name="login">Login</string>
     <string name="app_name">Trip Tracker</string>
     <string name="display_list">Display Item List</string>
-
+    <string name="initial_cost">Initial cost per KM</string>
+    <string name="subsequent_cost">Subsequent cost per KM</string>
+    <string name="initial_cost_breakpoint">KM allowed before reduction</string>
+    <string name="preferences_name">com.example.distancetracker.settings</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="add_distance_label">Add Distance</string>
     <string name="view_distance_label">View Distance</string>
+    <string name="settings_label">Settings</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <!-- Strings used for Shared Preferences -->
+    <string name="initial_cost_key">InitialCostKey</string>
+    <string name="initial_breakpoint_key">InitialBreakpointKey</string>
+    <string name="subsequent_cost_key">SubsequentCostKey</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

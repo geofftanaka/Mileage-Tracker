@@ -1,15 +1,16 @@
 package com.example.myapplication
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.data.Item
 import com.example.myapplication.databinding.FragmentAddDistanceBinding
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -37,8 +38,8 @@ class AddDistanceFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddDistanceBinding.inflate(inflater, container, false)
         return binding.root
@@ -50,7 +51,6 @@ class AddDistanceFragment : Fragment() {
         updateDailyTotal()
 
         binding.addButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             addNewItem()
             updateDailyTotal()
         }
@@ -61,10 +61,15 @@ class AddDistanceFragment : Fragment() {
         _binding = null
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_add_fragment, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.display_items -> transitionToDisplayList()
             R.id.clear_all -> clearAllItems()
+            R.id.settings_nav -> loadSettings()
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -77,10 +82,11 @@ class AddDistanceFragment : Fragment() {
         if (isEntryValid()) {
             viewModel.addNewItem(binding.mileageAmount.text.toString().toInt())
             binding.mileageAmount.setText("")
+            hideKeyboardFrom(context, binding.root)
         }
     }
 
-    private fun clearAllItems() : Boolean {
+    private fun clearAllItems(): Boolean {
         ClearWarningDialogFragment().show(childFragmentManager, "warningDialog")
         return false
     }
@@ -94,8 +100,16 @@ class AddDistanceFragment : Fragment() {
         }
     }
 
-    private fun transitionToDisplayList() : Boolean {
-        findNavController().navigate(R.id.action_add_distance_nav_to_view_distance_nav)
+    private fun loadSettings(): Boolean {
+        findNavController().navigate(R.id.action_add_distance_nav_to_settings_nav)
         return true
+    }
+
+    private fun hideKeyboardFrom(context: Context?, view: View) {
+        context?.let {
+            val imm: InputMethodManager =
+                it.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }
