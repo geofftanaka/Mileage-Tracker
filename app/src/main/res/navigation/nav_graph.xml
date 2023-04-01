@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_add_distance_nav_to_view_distance_nav"
             app:destination="@id/view_distance_nav" />
+        <action
+            android:id="@+id/action_add_distance_nav_to_settings_nav"
+            app:destination="@id/settings_nav" />
     </fragment>
     <fragment
         android:id="@+id/view_distance_nav"
@@ -23,6 +26,22 @@
 
         <action
             android:id="@+id/action_view_distance_nav_to_add_distance_nav"
+            app:destination="@id/add_distance_nav" />
+        <action
+            android:id="@+id/action_view_distance_nav_to_settings_nav"
+            app:destination="@id/settings_nav" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings_nav"
+        android:name="com.example.myapplication.SettingsFragment"
+        android:label="@string/settings_label"
+        tools:layout="@layout/fragment_settings">
+
+        <action
+            android:id="@+id/action_settings_nav_to_view_distance_nav"
+            app:destination="@id/view_distance_nav" />
+        <action
+            android:id="@+id/action_settings_nav_to_add_distance_nav"
             app:destination="@id/add_distance_nav" />
     </fragment>
 </navigation>
