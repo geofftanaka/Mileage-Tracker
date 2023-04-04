@@ -23,4 +23,7 @@ interface ItemDao {
 
     @Query("DELETE FROM Item")
     fun deleteAllItems()
+
+    @Query("DELETE FROM Item WHERE id = :itemId")
+    fun deleteItemById(itemId: Int)
 }

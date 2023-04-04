@@ -33,9 +33,8 @@ class DistanceViewModel(private val itemDao: ItemDao) : ViewModel() {
             .asLiveData()
     }
 
-    fun getItems() : LiveData<List<Item>> {
-        var list = itemDao.getItems().asLiveData()
-        return list
+    fun getItems(): LiveData<List<Item>> {
+        return itemDao.getItems().asLiveData()
     }
 
     fun clearAllItems() : Boolean {
@@ -45,6 +44,13 @@ class DistanceViewModel(private val itemDao: ItemDao) : ViewModel() {
 
         return true
     }
+
+    fun deleteItemById(itemId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            itemDao.deleteItemById(itemId)
+        }
+    }
+
     private fun getNewItemEntry(drivenDate: LocalDate?, distance: Int) : Item {
         return Item(
             drivenDate = drivenDate,
@@ -53,7 +59,11 @@ class DistanceViewModel(private val itemDao: ItemDao) : ViewModel() {
     }
 
     fun addNewItem(distance: Int) {
-        val newItem = getNewItemEntry(LocalDate.now(), distance)
+        addNewItem(LocalDate.now(), distance)
+    }
+
+    fun addNewItem(drivenDate: LocalDate?, distance: Int) {
+        val newItem = getNewItemEntry(drivenDate, distance)
         insertItem(newItem)
     }
 
