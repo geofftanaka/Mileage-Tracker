@@ -60,6 +60,7 @@ class ViewDistanceFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val deleteIcon = getDrawable(context!!, R.drawable.delete_icon)
         val distanceAdapter = DistanceListAdapter { item -> adapterOnClick(item) }
         val recyclerView: RecyclerView = view.findViewById(R.id.distance_recycler)
         recyclerView.adapter = distanceAdapter
@@ -105,11 +106,24 @@ class ViewDistanceFragment : Fragment(),
                 ) {
                     val itemView = viewHolder.itemView
                     val itemHeight = itemView.bottom - itemView.top
+                    val iconHeight = itemHeight - 20
+                    val iconWidth = iconHeight - 10
 
                     // Draw the red background
                     val background = ColorDrawable(Color.RED)
                     background.setBounds(itemView.left, itemView.top, itemView.left + dX.toInt(), itemView.bottom)
                     background.draw(c)
+
+                    // Calculate position of delete icon
+                    val iconTop = itemView.top + (itemHeight - iconHeight) / 2
+                    val iconMargin = (itemHeight - iconHeight) / 2
+                    val iconLeft = itemView.left + iconMargin
+                    val iconRight = itemView.left + iconMargin + iconWidth
+                    val iconBottom = iconTop + iconHeight
+
+                    // Draw the delete icon
+                    deleteIcon?.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                    deleteIcon?.draw(c)
 
                     super.onChildDraw(
                         c,
