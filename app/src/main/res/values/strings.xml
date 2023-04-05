@@ -5,6 +5,8 @@
     <string name="annual_total">Annual Total</string>
     <string name="clear">Clear All Items</string>
     <string name="clear_verification">This will completely delete all recorded distances. Are you sure?</string>
+    <string name="delete">Delete Item</string>
+    <string name="delete_verification">Do you wish to delete the distance?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="login_name">Login Name</string>
@@ -15,6 +17,9 @@
     <string name="subsequent_cost">Subsequent cost per KM</string>
     <string name="initial_cost_breakpoint">KM allowed before reduction</string>
     <string name="preferences_name">com.example.distancetracker.settings</string>
+    <string name="delete_warning_key">DeleteWarningKey</string>
+    <string name="deleted">Deleted</string>
+    <string name="undo">Undo</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="add_distance_label">Add Distance</string>

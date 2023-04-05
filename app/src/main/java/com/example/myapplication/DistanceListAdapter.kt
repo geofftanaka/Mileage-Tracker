@@ -32,6 +32,14 @@ class DistanceListAdapter(private val onClick: (Item) -> Unit) :
             dateTextView.text = item.drivenDate.toString()
             distanceTextView.text = item.distance.toString()
         }
+
+        fun getId() : Int {
+            return currentItem?.id ?: -1
+        }
+
+        fun getItem() : Item? {
+            return currentItem
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DistanceViewHolder {
