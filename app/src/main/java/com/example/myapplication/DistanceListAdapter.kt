@@ -52,6 +52,10 @@ class DistanceListAdapter(private val onClick: (Item) -> Unit) :
         val distanceItem = getItem(position)
         holder.bind(distanceItem)
     }
+
+    override fun getItemCount(): Int {
+        return super.getItemCount()
+    }
 }
 
 object DistanceDiffCallback : DiffUtil.ItemCallback<Item>() {
