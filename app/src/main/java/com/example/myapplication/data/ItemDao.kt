@@ -12,7 +12,7 @@ interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(item: Item)
 
-    @Query("SELECT id, date, distance FROM Item ORDER BY date")
+    @Query("SELECT id, date, distance FROM Item ORDER BY date DESC")
     fun getItems() : Flow<List<Item>>
 
     @Query("SELECT SUM(distance) FROM Item WHERE date = :selectedDate")
