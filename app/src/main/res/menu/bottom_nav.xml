@@ -8,4 +8,8 @@
         android:id="@+id/view_distance_nav"
         android:title="@string/view_distance_label"
         android:icon="@drawable/list_48px"/>
+    <item
+        android:id="@+id/report_distance_nav"
+        android:title="Report Distance"
+        android:icon="@drawable/report_48px"/>
 </menu>
